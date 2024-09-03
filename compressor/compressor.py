@@ -34,10 +34,10 @@ class Compressor(ABC):
     @abstractmethod
     def compression_coefficient(self, data, compress_data) -> float:
         """
-        Abstract method for compressing data.
+        Abstract method for compressing coefficient.
 
-        :param data: The initial data to be compressed.
-        :param compress_data: The compressed.
+        :param data: The initial non-compressed data.
+        :param compress_data: The compressed data.
         :return: The coefficient of compression.
         """
         pass
@@ -61,16 +61,5 @@ class Compressor(ABC):
         :param compressed_data: The compressed data to be decompressed.
         :param mask: Mask indicating land area.
         :return: The decompressed data.
-        """
-        pass
-
-    @abstractmethod
-    def compress_coefficient(self, data: ndarray, mask: ndarray = []):
-        """
-        Abstract method for compressing data.
-
-        :param data: The data to be compressed.
-        :param mask: Mask indicating land area.
-        :return: The compressed data.
         """
         pass
