@@ -9,7 +9,6 @@ class Compressor(ABC):
         Initialize the Compressor with a threshold and dimensions.
 
         :param threshold: The threshold value for compression.
-        :param dimensions: An object containing x, y, z dimensions.
         """
         self._threshold = threshold
 
