@@ -5,7 +5,7 @@ from numpy import ndarray
 
 def error(data : ndarray, compress_data = ndarray, norm = 'C') -> float:
     if (norm == 'C'):
-        return np.linalg.norm(data - compress_data, ord=np.inf)
+        return np.linalg.norm((data - compress_data).flatten(), ord=np.inf)
     elif (norm == 'L2'):
         return np.linalg.norm(data - compress_data, ord=2)
     return None
