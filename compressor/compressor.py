@@ -1,7 +1,14 @@
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
+import numpy as np
 from numpy import ndarray
-from numpy.ma import masked_array
+
+
+def error(data : ndarray, compress_data = ndarray, norm = 'C') -> float:
+    if (norm == 'C'):
+        return np.linalg.norm(data - compress_data, ord=np.inf)
+    elif (norm == 'L2'):
+        return np.linalg.norm(data - compress_data, ord=np.inf)
+    return None
 
 class Compressor(ABC):
     def __init__(self, threshold: float):
@@ -25,6 +32,17 @@ class Compressor(ABC):
         self._threshold = value
 
     @abstractmethod
+    def compression_coefficient(self, data, compress_data) -> float:
+        """
+        Abstract method for compressing data.
+
+        :param data: The initial data to be compressed.
+        :param compress_data: The compressed.
+        :return: The coefficient of compression.
+        """
+        pass
+
+    @abstractmethod
     def compress(self, data: ndarray, mask: ndarray = []):
         """
         Abstract method for compressing data.
@@ -46,3 +64,13 @@ class Compressor(ABC):
         """
         pass
 
+    @abstractmethod
+    def compress_coefficient(self, data: ndarray, mask: ndarray = []):
+        """
+        Abstract method for compressing data.
+
+        :param data: The data to be compressed.
+        :param mask: Mask indicating land area.
+        :return: The compressed data.
+        """
+        pass
