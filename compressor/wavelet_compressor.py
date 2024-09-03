@@ -12,7 +12,7 @@ class WaveletCompressor(Compressor):
         # Perform wavelet transform on the data
         coeff_arr, slices = pywt.wavedecn(data, self._wavelet, level=3)
         thresholded_coeff_arr = pywt.threshold(coeff_arr, 0.35, mode='hard')
-        coeffs = pywt.array_to_coeffs(coeff_arr, slices, 'wavedecn')
+        coeffs = pywt.array_to_coeffs(thresholded_coeff_arr, slices, 'wavedecn')
         
         return coeffs
 
