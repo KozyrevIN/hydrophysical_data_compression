@@ -5,9 +5,9 @@ from numpy import ndarray
 
 def error(data : ndarray, compress_data = ndarray, norm = 'C') -> float:
     if (norm == 'C'):
-        return np.linalg.norm((data - compress_data).flatten(), ord=np.inf)
+        return np.linalg.norm((data - compress_data).flatten(), ord = np.inf)
     elif (norm == 'L2'):
-        return np.linalg.norm(data - compress_data, ord=2)
+        return np.linalg.norm(data - compress_data, ord = 2)
     return None
 
 class Compressor(ABC):
@@ -32,7 +32,7 @@ class Compressor(ABC):
         self._threshold = value
 
     @abstractmethod
-    def compression_coefficient(self, data, compress_data) -> float:
+    def compression_coefficient(self, data, compressed_data) -> float:
         """
         Abstract method for compressing coefficient.
 
